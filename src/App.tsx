@@ -23,6 +23,10 @@ import CertificateDetails from "./pages/CertificateDetails";
 import Auth from "./pages/Auth";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Gallery from "./pages/Gallery";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
+import AccreditationRequest from "./pages/AccreditationRequest";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminArticles from "./pages/admin/AdminArticles";
 import AdminChefs from "./pages/admin/AdminChefs";
@@ -54,6 +58,10 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/certificate" element={<Certificate />} />
               <Route path="/certificate/:number" element={<CertificateDetails />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/accreditation" element={<AccreditationRequest />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
