@@ -25,7 +25,6 @@ const Header = () => {
     { href: '/recipes', label: t('nav.recipes') },
     { href: '/articles', label: t('nav.articles') },
     { href: '/contact', label: t('nav.contact') },
-    { href: '/certificate', label: t('nav.certificate') },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -72,14 +71,14 @@ const Header = () => {
             <NavLinks />
           </nav>
 
-          {/* Actions */}
-          <div className={`flex items-center ${dir === 'rtl' ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+          {/* Desktop Actions */}
+          <div className={`hidden lg:flex items-center ${dir === 'rtl' ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
             {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className="flex items-center gap-2">
                   <Globe className="w-4 h-4" />
-                  <span className="hidden sm:inline">{t('common.language')}</span>
+                  <span>{t('common.language')}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-white">
@@ -104,28 +103,28 @@ const Header = () => {
                 {t('nav.auth')}
               </Button>
             </Link>
-
-            {/* Admin Button */}
-            <Link to="/admin">
-              <Button variant="default" size="sm" className="bg-amber-600 hover:bg-amber-700">
-                {t('nav.admin')}
-              </Button>
-            </Link>
-
-            {/* Mobile Menu */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="lg:hidden">
-                <Button variant="outline" size="sm">
-                  <Menu className="w-4 h-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side={dir === 'rtl' ? 'left' : 'right'} className="bg-white">
-                <nav className="flex flex-col space-y-4 mt-6">
-                  <NavLinks mobile />
-                </nav>
-              </SheetContent>
-            </Sheet>
           </div>
+
+          {/* Mobile Menu */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button variant="outline" size="sm">
+                <Menu className="w-4 h-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side={dir === 'rtl' ? 'left' : 'right'} className="bg-white">
+              <nav className="flex flex-col space-y-4 mt-6">
+                <NavLinks mobile />
+                <div className="border-t pt-4 space-y-2">
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" size="sm" className="w-full">
+                      {t('nav.auth')}
+                    </Button>
+                  </Link>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
